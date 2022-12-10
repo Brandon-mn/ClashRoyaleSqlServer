@@ -1,0 +1,734 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{FB83720A-FF6B-4732-97BB-4B4153CE8703}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>ClashRoyaleSqlServer</RootNamespace>
+    <AssemblyName>ClashRoyaleSqlServer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.Bcl.AsyncInterfaces, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.AsyncInterfaces.7.0.0\lib\net462\Microsoft.Bcl.AsyncInterfaces.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Bcl.HashCode, Version=1.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.HashCode.1.1.1\lib\net461\Microsoft.Bcl.HashCode.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.Logging.Abstractions, Version=6.0.0.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\lib\net461\Microsoft.Extensions.Logging.Abstractions.dll</HintPath>
+    </Reference>
+    <Reference Include="Npgsql, Version=7.0.0.0, Culture=neutral, PublicKeyToken=5d8b90d52f46fda7, processorArchitecture=MSIL">
+      <HintPath>..\packages\Npgsql.7.0.0\lib\netstandard2.0\Npgsql.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Collections.Immutable, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.Immutable.7.0.0\lib\net462\System.Collections.Immutable.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=6.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.6.0.0\lib\net461\System.Diagnostics.DiagnosticSource.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Memory, Version=4.0.1.2, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.5\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Encodings.Web, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Encodings.Web.7.0.0\lib\net462\System.Text.Encodings.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Text.Json.7.0.0\lib\net462\System.Text.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Channels, Version=7.0.0.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Channels.7.0.0\lib\net462\System.Threading.Channels.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Threading.Tasks.Extensions, Version=4.2.0.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Threading.Tasks.Extensions.4.5.4\lib\net461\System.Threading.Tasks.Extensions.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ValueTuple, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.ValueTuple.4.5.0\lib\net47\System.ValueTuple.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Adorno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Adorno.Designer.cs">
+      <DependentUpon>Adorno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Arena.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Arena.Designer.cs">
+      <DependentUpon>Arena.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Aspecto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Aspecto.Designer.cs">
+      <DependentUpon>Aspecto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Bonus.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Bonus.Designer.cs">
+      <DependentUpon>Bonus.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Botin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Botin.Designer.cs">
+      <DependentUpon>Botin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CaminoLeyenda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CaminoLeyenda.Designer.cs">
+      <DependentUpon>CaminoLeyenda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CaminoTrofeo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CaminoTrofeo.Designer.cs">
+      <DependentUpon>CaminoTrofeo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Campeon.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Campeon.Designer.cs">
+      <DependentUpon>Campeon.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Carta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Carta.Designer.cs">
+      <DependentUpon>Carta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Clan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Clan.Designer.cs">
+      <DependentUpon>Clan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClanGuerra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClanGuerra.Designer.cs">
+      <DependentUpon>ClanGuerra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ClanSolicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ClanSolicitud.Designer.cs">
+      <DependentUpon>ClanSolicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CodigoRegalo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CodigoRegalo.Designer.cs">
+      <DependentUpon>CodigoRegalo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Cofre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cofre.Designer.cs">
+      <DependentUpon>Cofre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Comodin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Comodin.Designer.cs">
+      <DependentUpon>Comodin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="conexinsqlserver.cs" />
+    <Compile Include="CreadorContenido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CreadorContenido.Designer.cs">
+      <DependentUpon>CreadorContenido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Desafio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Desafio.Designer.cs">
+      <DependentUpon>Desafio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Donacion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Donacion.Designer.cs">
+      <DependentUpon>Donacion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Echizo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Echizo.Designer.cs">
+      <DependentUpon>Echizo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Empleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Empleado.Designer.cs">
+      <DependentUpon>Empleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estadistica.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estadistica.Designer.cs">
+      <DependentUpon>Estadistica.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Estructura.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Estructura.Designer.cs">
+      <DependentUpon>Estructura.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Formulario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Formulario.Designer.cs">
+      <DependentUpon>Formulario.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Guerra.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Guerra.Designer.cs">
+      <DependentUpon>Guerra.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Habiliadad.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Habiliadad.Designer.cs">
+      <DependentUpon>Habiliadad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Intercambio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Intercambio.Designer.cs">
+      <DependentUpon>Intercambio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JugadorAdorno.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JugadorAdorno.Designer.cs">
+      <DependentUpon>JugadorAdorno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JugadorCofre.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JugadorCofre.Designer.cs">
+      <DependentUpon>JugadorCofre.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JugadorComodin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JugadorComodin.Designer.cs">
+      <DependentUpon>JugadorComodin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JugadorMarco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JugadorMarco.Designer.cs">
+      <DependentUpon>JugadorMarco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JugadorMazo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JugadorMazo.Designer.cs">
+      <DependentUpon>JugadorMazo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="JugadorTvRoyale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="JugadorTvRoyale.Designer.cs">
+      <DependentUpon>JugadorTvRoyale.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Libro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Libro.Designer.cs">
+      <DependentUpon>Libro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LibroJugador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LibroJugador.Designer.cs">
+      <DependentUpon>LibroJugador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Liga.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Liga.Designer.cs">
+      <DependentUpon>Liga.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LigaClan.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LigaClan.Designer.cs">
+      <DependentUpon>LigaClan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Logro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logro.Designer.cs">
+      <DependentUpon>Logro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="LogroJugador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LogroJugador.Designer.cs">
+      <DependentUpon>LogroJugador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maestria.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maestria.Designer.cs">
+      <DependentUpon>Maestria.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Maestro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Maestro.Designer.cs">
+      <DependentUpon>Maestro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MaestroJugador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MaestroJugador.Designer.cs">
+      <DependentUpon>MaestroJugador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Marco.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Marco.Designer.cs">
+      <DependentUpon>Marco.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mazo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mazo.Designer.cs">
+      <DependentUpon>Mazo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MazoCarta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MazoCarta.Designer.cs">
+      <DependentUpon>MazoCarta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mercader.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mercader.Designer.cs">
+      <DependentUpon>Mercader.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Mision.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Mision.Designer.cs">
+      <DependentUpon>Mision.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MisionJugador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MisionJugador.Designer.cs">
+      <DependentUpon>MisionJugador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ModoJuego.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ModoJuego.Designer.cs">
+      <DependentUpon>ModoJuego.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Nivel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Nivel.Designer.cs">
+      <DependentUpon>Nivel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Oferta.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Oferta.Designer.cs">
+      <DependentUpon>Oferta.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pase.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pase.Designer.cs">
+      <DependentUpon>Pase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PaseTienda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PaseTienda.Designer.cs">
+      <DependentUpon>PaseTienda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Pedido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Pedido.Designer.cs">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Puesto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Puesto.Designer.cs">
+      <DependentUpon>Puesto.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Reaccion.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Reaccion.Designer.cs">
+      <DependentUpon>Reaccion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Registro.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Registro.Designer.cs">
+      <DependentUpon>Registro.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RegistroJugador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegistroJugador.Designer.cs">
+      <DependentUpon>RegistroJugador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Solicitud.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Solicitud.Designer.cs">
+      <DependentUpon>Solicitud.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Supercell.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Supercell.Designer.cs">
+      <DependentUpon>Supercell.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SupercellEmpleado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SupercellEmpleado.Designer.cs">
+      <DependentUpon>SupercellEmpleado.cs</DependentUpon>
+    </Compile>
+    <Compile Include="SuperrcellCreadoContenido.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SuperrcellCreadoContenido.Designer.cs">
+      <DependentUpon>SuperrcellCreadoContenido.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tienda.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tienda.Designer.cs">
+      <DependentUpon>Tienda.cs</DependentUpon>
+    </Compile>
+    <Compile Include="TiendaPago.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="TiendaPago.Designer.cs">
+      <DependentUpon>TiendaPago.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Torneo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Torneo.Designer.cs">
+      <DependentUpon>Torneo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tropa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tropa.Designer.cs">
+      <DependentUpon>Tropa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Tvroyale.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Tvroyale.Designer.cs">
+      <DependentUpon>Tvroyale.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Adorno.resx">
+      <DependentUpon>Adorno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Arena.resx">
+      <DependentUpon>Arena.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Aspecto.resx">
+      <DependentUpon>Aspecto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Bonus.resx">
+      <DependentUpon>Bonus.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Botin.resx">
+      <DependentUpon>Botin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CaminoLeyenda.resx">
+      <DependentUpon>CaminoLeyenda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CaminoTrofeo.resx">
+      <DependentUpon>CaminoTrofeo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Campeon.resx">
+      <DependentUpon>Campeon.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Carta.resx">
+      <DependentUpon>Carta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Clan.resx">
+      <DependentUpon>Clan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClanGuerra.resx">
+      <DependentUpon>ClanGuerra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ClanSolicitud.resx">
+      <DependentUpon>ClanSolicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CodigoRegalo.resx">
+      <DependentUpon>CodigoRegalo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Cofre.resx">
+      <DependentUpon>Cofre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Comodin.resx">
+      <DependentUpon>Comodin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CreadorContenido.resx">
+      <DependentUpon>CreadorContenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Desafio.resx">
+      <DependentUpon>Desafio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Donacion.resx">
+      <DependentUpon>Donacion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Echizo.resx">
+      <DependentUpon>Echizo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Empleado.resx">
+      <DependentUpon>Empleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estadistica.resx">
+      <DependentUpon>Estadistica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Estructura.resx">
+      <DependentUpon>Estructura.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Formulario.resx">
+      <DependentUpon>Formulario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Guerra.resx">
+      <DependentUpon>Guerra.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Habiliadad.resx">
+      <DependentUpon>Habiliadad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Intercambio.resx">
+      <DependentUpon>Intercambio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JugadorAdorno.resx">
+      <DependentUpon>JugadorAdorno.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JugadorCofre.resx">
+      <DependentUpon>JugadorCofre.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JugadorComodin.resx">
+      <DependentUpon>JugadorComodin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JugadorMarco.resx">
+      <DependentUpon>JugadorMarco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JugadorMazo.resx">
+      <DependentUpon>JugadorMazo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="JugadorTvRoyale.resx">
+      <DependentUpon>JugadorTvRoyale.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Libro.resx">
+      <DependentUpon>Libro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LibroJugador.resx">
+      <DependentUpon>LibroJugador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Liga.resx">
+      <DependentUpon>Liga.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LigaClan.resx">
+      <DependentUpon>LigaClan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Logro.resx">
+      <DependentUpon>Logro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LogroJugador.resx">
+      <DependentUpon>LogroJugador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maestria.resx">
+      <DependentUpon>Maestria.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Maestro.resx">
+      <DependentUpon>Maestro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MaestroJugador.resx">
+      <DependentUpon>MaestroJugador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Marco.resx">
+      <DependentUpon>Marco.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mazo.resx">
+      <DependentUpon>Mazo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MazoCarta.resx">
+      <DependentUpon>MazoCarta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mercader.resx">
+      <DependentUpon>Mercader.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Mision.resx">
+      <DependentUpon>Mision.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MisionJugador.resx">
+      <DependentUpon>MisionJugador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ModoJuego.resx">
+      <DependentUpon>ModoJuego.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Nivel.resx">
+      <DependentUpon>Nivel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Oferta.resx">
+      <DependentUpon>Oferta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pase.resx">
+      <DependentUpon>Pase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="PaseTienda.resx">
+      <DependentUpon>PaseTienda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Pedido.resx">
+      <DependentUpon>Pedido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Puesto.resx">
+      <DependentUpon>Puesto.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Reaccion.resx">
+      <DependentUpon>Reaccion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Registro.resx">
+      <DependentUpon>Registro.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegistroJugador.resx">
+      <DependentUpon>RegistroJugador.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Solicitud.resx">
+      <DependentUpon>Solicitud.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Supercell.resx">
+      <DependentUpon>Supercell.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SupercellEmpleado.resx">
+      <DependentUpon>SupercellEmpleado.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SuperrcellCreadoContenido.resx">
+      <DependentUpon>SuperrcellCreadoContenido.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tienda.resx">
+      <DependentUpon>Tienda.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TiendaPago.resx">
+      <DependentUpon>TiendaPago.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Torneo.resx">
+      <DependentUpon>Torneo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tropa.resx">
+      <DependentUpon>Tropa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Tvroyale.resx">
+      <DependentUpon>Tvroyale.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Import Project="..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets" Condition="Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" />
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.Extensions.Logging.Abstractions.6.0.0\build\Microsoft.Extensions.Logging.Abstractions.targets'))" />
+  </Target>
+</Project>
