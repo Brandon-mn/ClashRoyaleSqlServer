@@ -76,5 +76,21 @@ namespace ClashRoyaleSqlServer
         {
             MostrarDatos();
         }
+
+        private void dataGridView1_SelectionChanged(object sender, EventArgs e)
+        {
+            //if (dataGridView1.SelectedRows.Count > 0)
+            //{
+            //    string celda1 = dataGridView1.SelectedRows[0].Cells[1].Value + string.Empty;
+            //    string celda2 = dataGridView1.SelectedRows[0].Cells[2].Value + string.Empty;
+            //    string celd3 = dataGridView1.SelectedRows[0].Cells[3].Value + string.Empty;
+            //    string celd4 = dataGridView1.SelectedRows[0].Cells[4].Value + string.Empty;
+            //    textBox1.Text = celda1;
+            //    textBox2.Text = celda2;
+            //    textBox3.Text = celd3;
+            //    textBox4.Text = celd4;
+            //}
+
+        }
     }
 }

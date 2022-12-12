@@ -135,6 +135,8 @@ namespace ClashRoyaleSqlServer
             this.torneoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tropaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
+            this.label13 = new System.Windows.Forms.Label();
+            this.textBox13 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.menuStrip1.SuspendLayout();
             this.menuStrip2.SuspendLayout();
@@ -969,7 +971,7 @@ namespace ClashRoyaleSqlServer
             // torneoToolStripMenuItem
             // 
             this.torneoToolStripMenuItem.Name = "torneoToolStripMenuItem";
-            this.torneoToolStripMenuItem.Size = new System.Drawing.Size(122, 20);
+            this.torneoToolStripMenuItem.Size = new System.Drawing.Size(55, 20);
             this.torneoToolStripMenuItem.Text = "Torneo";
             this.torneoToolStripMenuItem.Click += new System.EventHandler(this.torneoToolStripMenuItem_Click);
             // 
@@ -989,11 +991,29 @@ namespace ClashRoyaleSqlServer
             this.button1.TabIndex = 42;
             this.button1.UseVisualStyleBackColor = false;
             // 
+            // label13
+            // 
+            this.label13.AutoSize = true;
+            this.label13.Location = new System.Drawing.Point(441, 277);
+            this.label13.Name = "label13";
+            this.label13.Size = new System.Drawing.Size(66, 13);
+            this.label13.TabIndex = 44;
+            this.label13.Text = "idEstadistica";
+            // 
+            // textBox13
+            // 
+            this.textBox13.Location = new System.Drawing.Point(538, 270);
+            this.textBox13.Name = "textBox13";
+            this.textBox13.Size = new System.Drawing.Size(100, 20);
+            this.textBox13.TabIndex = 43;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1098, 474);
+            this.Controls.Add(this.label13);
+            this.Controls.Add(this.textBox13);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.label10);
@@ -1155,6 +1175,8 @@ namespace ClashRoyaleSqlServer
         private System.Windows.Forms.ToolStripMenuItem torneoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tropaToolStripMenuItem;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Label label13;
+        private System.Windows.Forms.TextBox textBox13;
     }
 }
 

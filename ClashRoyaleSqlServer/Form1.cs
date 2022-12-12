@@ -54,9 +54,10 @@ namespace ClashRoyaleSqlServer
             string idPase = textBox10.Text;
             string idCaminoTrofeo = textBox11.Text;
             string idCaminoLeyenda = textBox12.Text;
-            consulta = "INSERT INTO Jugador (nombre, codigo, puntosEstelares, estatus, experiencia, idDesafio, idLibro, idClan, idTorneo, idPase, idCaminoTrofeo, idCaminoLeyenda) " +
+            string idEstadistica = textBox13.Text;
+            consulta = "INSERT INTO Jugador (nombre, codigo, puntosEstelares, estatus, experiencia, idDesafio, idLibro, idClan, idTorneo, idPase, idCaminoTrofeo, idCaminoLeyenda,idEstadistica) " +
                 "values('" + nombre + "', '" + codigo + "', '" + puntosEstelares + "', '" + estatus + "', '" + experiencia + "', '" + idDesafio + "', '" + idLibro +
-                "', '" + idClan + "', '" + idTorneo + "', '" + idPase + "', '" + idCaminoTrofeo + "', '" + idCaminoLeyenda + "')";
+                "', '" + idClan + "', '" + idTorneo + "', '" + idPase + "', '" + idCaminoTrofeo + "', '" + idCaminoLeyenda + "', '" + idEstadistica + "')";
             conexinsqlserver.ejecutaConsulta(consulta);
             MostrarDatos();
 
@@ -90,14 +91,13 @@ namespace ClashRoyaleSqlServer
             string idPase = textBox10.Text;
             string idCaminoTrofeo = textBox11.Text;
             string idCaminoLeyenda = textBox12.Text;
+              string idEstadistica = textBox13.Text;
             consulta = "UPDATE Jugador SET nombre = '" + nombre + "',codigo = '" + codigo + "',puntosEstelares = '" + puntosEstelares +
                 "',estatus = '" + estatus + "',experiencia = '" + experiencia + "'" + ",idDesafio = '" + idDesafio +
                 "',idLibro = '" + idLibro + "',idClan = '" + idClan + "',idTorneo = '" + idTorneo + "'" +
-                ",idPase = '" + idPase + "',idCaminoTrofeo = '" + idCaminoTrofeo + "',idCaminoLeyenda = '" + idCaminoLeyenda + "' WHERE idJugador = " + idJugador.ToString();
+                ",idPase = '" + idPase + "',idCaminoTrofeo = '" + idCaminoTrofeo + "',idCaminoLeyenda = '" + idEstadistica + "',idEstadistica = '" + idCaminoLeyenda + "' WHERE idJugador = " + idJugador.ToString();
             conexinsqlserver.ejecutaConsulta(consulta);
             MostrarDatos();
-
-
             textBox1.Clear();
             textBox2.Clear();
             textBox3.Clear();
